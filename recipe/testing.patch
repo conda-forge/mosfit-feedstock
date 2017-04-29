@@ -1,0 +1,17 @@
+--- test.sh.orig	2017-04-28 16:56:17.500758483 -0400
++++ test.sh	2017-04-28 18:00:03.787332450 -0400
+@@ -1,5 +1,7 @@
+ #! /bin/bash
+-set -ev
++set -e
++set -x
++
+ if [ "$1" = -c ]; then
+     RUNNER="coverage run -p --source=mosfit"
+     TRUNNER="coverage run -p"
+@@ -37,3 +39,5 @@
+     echo "travis_fold:end:JUP Testing Jupyter notebooks"
+     coverage combine
+ fi
++
++echo "Success."

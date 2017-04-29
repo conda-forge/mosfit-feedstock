@@ -44,7 +44,6 @@ cat << EOF | docker run -i \
                         condaforge/linux-anvil \
                         bash || exit 1
 
-set -e
 set +x
 export BINSTAR_TOKEN=${BINSTAR_TOKEN}
 set -x
@@ -57,12 +56,25 @@ conda clean --lock
 conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
 
-# Embarking on 1 case(s).
-    set -x
+# Embarking on 3 case(s).
     export CONDA_PY=27
-    set +x
-    conda build /recipe_root --quiet || exit 1
-    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+    conda build /recipe_root
+    echo "ROUND 1a $?"
+    exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main
+    echo "ROUND 1b $?"
+
+    export CONDA_PY=35
+    conda build /recipe_root
+    echo "ROUND 2a $?"
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main
+    echo "ROUND 2b $?"
+
+    export CONDA_PY=36
+    conda build /recipe_root
+    echo "ROUND 3a $?"
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main
+    echo "ROUND 3b $?"
 touch /feedstock_root/build_artefacts/conda-forge-build-done
 EOF
 
