@@ -44,7 +44,6 @@ cat << EOF | docker run -i \
                         condaforge/linux-anvil \
                         bash || exit 1
 
-set -e
 set +x
 export BINSTAR_TOKEN=${BINSTAR_TOKEN}
 set -x
@@ -61,6 +60,7 @@ source run_conda_forge_build_setup
     export CONDA_PY=27
     conda build /recipe_root
     echo "ROUND 1a $?"
+    exit 1
     upload_or_check_non_existence /recipe_root conda-forge --channel=main
     echo "ROUND 1b $?"
 
