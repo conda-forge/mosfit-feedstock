@@ -52,6 +52,8 @@ requirements:
     - six
 
 test:
+  requires:
+    - git
   imports:
     - mosfit
   files:
