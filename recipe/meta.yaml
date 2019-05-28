@@ -54,6 +54,7 @@ requirements:
 test:
   requires:
     - git
+    - openssh  # [not win]
     - xorg-libx11
   imports:
     - mosfit
