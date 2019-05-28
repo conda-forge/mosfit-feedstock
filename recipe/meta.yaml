@@ -54,6 +54,7 @@ requirements:
 test:
   requires:
     - git
+    - xorg-libx11
   imports:
     - mosfit
   files:
