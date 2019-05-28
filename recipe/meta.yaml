@@ -71,7 +71,7 @@ test:
     - time bash ./forge_test.sh  # [not win]
 
 about:
-  home: http://github.com/guillochon/mosfit
+  home: https://github.com/guillochon/mosfit
   license: MIT
   license_family: MIT
   license_file: LICENSE
@@ -81,7 +81,7 @@ about:
     mosfit is a package that performs fitting of semi-analytical model predictions
     to observed astrophysical transients. Data can be provided by the user or pulled
     automatically from the Open Astronomy catalogs.
-  doc_url: http://mosfit.readthedocs.io/
+  doc_url: https://mosfit.readthedocs.io/
   dev_url: https://github.com/guillochon/mosfit
 
 extra:
