@@ -1,6 +1,6 @@
 {% set name = "mosfit" %}
-{% set version = "1.1.6" %}
-{% set sha256 = "a62cb41751de999459dd398f44432474d57742fe2e20fdbfdf7f36d9eddea058" %}
+{% set version = "1.1.7" %}
+{% set sha256 = "4dbcd512b69b5bd014593d1b79035b766222fcd172864fd81238024f0ecec653" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -75,7 +75,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Modular fitter for astrophysical transients'
+  summary: Modular fitter for astrophysical transients
 
   description: |
     mosfit is a package that performs fitting of semi-analytical model predictions
