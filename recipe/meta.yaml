@@ -1,6 +1,6 @@
 {% set name = "mosfit" %}
-{% set version = "1.1.8" %}
-{% set sha256 = "e3372d24c50a72927b9dbf3e5519d916050c27b29a872ad664fd43200be1feb5" %}
+{% set version = "1.1.9" %}
+{% set sha256 = "995d6286f8b7d2d83ee75ca205b5e41c6b677b9b2c4301c96474b881711d0ca0" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
