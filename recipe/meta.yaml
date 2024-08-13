@@ -86,6 +86,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - gmzsebastian
     - guillochon
     - mnicholl
     - pkgw
