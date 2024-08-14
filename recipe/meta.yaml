@@ -1,6 +1,6 @@
 {% set name = "mosfit" %}
-{% set version = "1.1.9" %}
-{% set sha256 = "995d6286f8b7d2d83ee75ca205b5e41c6b677b9b2c4301c96474b881711d0ca0" %}
+{% set version = "1.2" %}
+{% set sha256 = "15f4ddd97b0563c34b8dacbd341591bb95f2c272236f276bff494e9d6ca0b3c8" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -86,6 +86,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - gmzsebastian
     - guillochon
     - mnicholl
     - pkgw

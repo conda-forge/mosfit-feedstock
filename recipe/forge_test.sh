@@ -4,11 +4,7 @@
 # the test suite to something that can be run in the 120-minute time limit of
 # Circle CI.
 
-set -e -x
-
-# 2017 Dec 4: Work around SSL problem; see https://github.com/conda-forge/mosfit-feedstock/issues/23
-unset REQUESTS_CA_BUNDLE
-unset SSL_CERT_FILE
+set -xeuo pipefail
 
 function my_mpirun() {
     # Work around bug in mpich mpirun that leaves stdin/stdout
@@ -18,7 +14,7 @@ function my_mpirun() {
     mpirun "$@" </dev/null 2>&1 |cat
 }
 
-my_mpirun -np 2 python -m mosfit -e SN2009do --test -i 1 -f 1 -p 0 -F covariance
-python -m mosfit -e SN2007bg --test -i 1 --no-fracking -m ic
+my_mpirun -np 2 python -m mosfit -e mosfit/tests/LSQ12dlf.json --test -i 1 -f 1 -p 0 -F covariance
+python -m mosfit -e mosfit/tests/SN2006le.json --test -i 1 --no-fracking -m ic
 python -m mosfit --test -i 0
 python -m mosfit -i 0 -m default -P parameters_test.json
