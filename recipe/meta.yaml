@@ -7,20 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python
     - pip
+    - setuptools
     - scipy !=0.19.0
     - astrocats
-    - astropy
+    - astropy-base
     - cython
     - emcee
     - extinction
@@ -37,7 +38,7 @@ requirements:
     - python
     - scipy !=0.19.0
     - astrocats
-    - astropy
+    - astropy-base
     - cython
     - emcee
     - extinction
