@@ -19,36 +19,46 @@ requirements:
     - python
     - pip
     - setuptools
-    - scipy !=0.19.0
     - astrocats
     - astropy-base
     - cython
+    - dynesty
     - emcee
     - extinction
+    - h5py
     - inflect
     - matplotlib-base
     - mpi4py  # [not win]
     - nbstripout
     - numexpr
+    - numpy <=1.26.4
     - palettable
-    - schwimmbad
+    - pandas >=2.1,<3
+    - pytorch
+    - schwimmbad <0.4
+    - scipy
     - seaborn
     - six
   run:
     - python
-    - scipy !=0.19.0
     - astrocats
     - astropy-base
     - cython
+    - dynesty
     - emcee
     - extinction
+    - h5py
     - inflect
     - matplotlib-base
     - mpi4py  # [not win]
     - nbstripout
     - numexpr
+    - numpy <=1.26.4
     - palettable
-    - schwimmbad
+    - pandas >=2.1,<3
+    - pytorch
+    - schwimmbad <0.4
+    - scipy
     - seaborn
     - six
 
