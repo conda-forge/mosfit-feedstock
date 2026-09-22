@@ -13,9 +13,12 @@ Development: https://github.com/guillochon/mosfit
 
 Documentation: https://mosfit.readthedocs.io/
 
-mosfit is a package that performs fitting of semi-analytical model predictions
-to observed astrophysical transients. Data can be provided by the user or pulled
-automatically from the Open Astronomy catalogs.
+MOSFiT fits semi-analytical model predictions to observed astrophysical
+transients. MOSFiT 2 reads event data from local catalog-format JSON or
+ASCII files; it no longer downloads events from the Open Astronomy
+catalogs or uploads fits. The default sampler is dynesty. PyTorch (for the
+SESN SEDONA model) and mpi4py are optional extras rather than required run
+dependencies.
 
 
 Current build status
@@ -23,50 +26,11 @@ Current build status
 
 
 <table><tr>
-    <td>GitHub Actions</td>
+    <td>All platforms:</td>
     <td>
       <a href="https://github.com/conda-forge/mosfit-feedstock/actions/workflows/conda-build.yml">
         <img src="https://github.com/conda-forge/mosfit-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
-    </td>
-  </tr>
-    
-  <tr>
-    <td>Azure</td>
-    <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3131&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mosfit-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>osx_64_python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3131&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mosfit-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3131&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mosfit-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3131&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mosfit-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
     </td>
   </tr>
 </table>
