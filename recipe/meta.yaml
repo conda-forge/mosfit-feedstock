@@ -27,6 +27,9 @@ requirements:
     - dynesty >=3.1
     - emcee >=3.0.2
     - extinction >=0.2.2
+    # astrocats imports GitPython, which refuses to import at all when
+    # there is no git executable on PATH, so `import mosfit` needs one.
+    - git
     - h5py >=3.8.0
     - inflect >=1.0.0
     - matplotlib-base >=3.0.0
