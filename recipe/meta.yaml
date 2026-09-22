@@ -1,86 +1,59 @@
 {% set name = "mosfit" %}
-{% set version = "1.3" %}
-{% set sha256 = "a209c15bc7987df5eb2c6eb063ba71ce9c64a41b865cb7b273c389c0ec0caa02" %}
+{% set version = "2.0.1" %}
+{% set sha256 = "c89bd13bcb3c786b6e2e238ebf9d6bdfcbf7b58777026f3cea2a6666de061e51" %}
 
 package:
   name: {{ name|lower }}
-  version: "{{ version }}"
+  version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py >= 313] -- because we require Numpy < 2
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
-    - setuptools
-    - astrocats
-    - astropy-base
-    - cython
-    - dynesty
-    - emcee
-    - extinction
-    - h5py
-    - inflect
-    - matplotlib-base
-    - mpi4py  # [not win]
-    - nbstripout
-    - numexpr
-    - numpy <=1.26.4
-    - palettable
-    - pandas >=2.1,<3
-    - pytorch
-    - schwimmbad <0.4
-    - scipy
-    - seaborn
-    - six
+    - hatchling
   run:
-    - python
-    - astrocats
-    - astropy-base
-    - cython
-    - dynesty
-    - emcee
-    - extinction
-    - h5py
-    - inflect
-    - matplotlib-base
-    - mpi4py  # [not win]
-    - nbstripout
-    - numexpr
-    - numpy <=1.26.4
-    - palettable
-    - pandas >=2.1,<3
-    - pytorch
-    - schwimmbad <0.4
-    - scipy
-    - seaborn
-    - six
+    - python >={{ python_min }}
+    - astrocats >=0.5.0
+    - astropy-base >=7.1
+    - dynesty >=3.1
+    - emcee >=3.0.2
+    - extinction >=0.2.2
+    - h5py >=3.8.0
+    - inflect >=1.0.0
+    - matplotlib-base >=3.0.0
+    - nbstripout >=0.2.9
+    - numba >=0.67.0
+    - numexpr >=2.6.1
+    - numpy >=2.3
+    - palettable >=2.1.1
+    - pandas >=2.2
+    - schwimmbad >=0.4.2
+    - scipy >=1.2
+    - seaborn >=0.7.1
+    - six >=1.0.0
 
 test:
-  requires:
-    - git
-    - openssh  # [not win]
-    - xorg-libx11
   imports:
     - mosfit
-  files:
-    - forge_test.sh
   source_files:
     - test.py
-    - test.sh
-    - mosfit/tests/LSQ12dlf.json
-    - mosfit/tests/SN2006le.json
-    - mosfit/tests/event_list.txt
-    - mosfit/tests/PTF10hgi.txt
+  requires:
+    - python {{ python_min }}
+    - pip
   commands:
-    - time bash ./forge_test.sh  # [not win]
+    - pip check
+    - mosfit --version
+    - python -c "import mosfit; assert mosfit.__version__ == '{{ version }}'"
+    - python test.py
 
 about:
   home: https://github.com/guillochon/mosfit
@@ -88,11 +61,13 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Modular fitter for astrophysical transients
-
   description: |
-    mosfit is a package that performs fitting of semi-analytical model predictions
-    to observed astrophysical transients. Data can be provided by the user or pulled
-    automatically from the Open Astronomy catalogs.
+    MOSFiT fits semi-analytical model predictions to observed astrophysical
+    transients. MOSFiT 2 reads event data from local catalog-format JSON or
+    ASCII files; it no longer downloads events from the Open Astronomy
+    catalogs or uploads fits. The default sampler is dynesty. PyTorch (for the
+    SESN SEDONA model) and mpi4py are optional extras rather than required run
+    dependencies.
   doc_url: https://mosfit.readthedocs.io/
   dev_url: https://github.com/guillochon/mosfit
 
